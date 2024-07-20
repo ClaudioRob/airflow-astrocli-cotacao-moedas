@@ -12,7 +12,7 @@ import logging
 from io import StringIO
 
 dag = DAG(
-    'fin_cotacoes_bcb_classic',
+    'cotacoes',
     schedule_interval='@daily',
     default_args={
         'owner': 'airflow',
