@@ -1,10 +1,8 @@
 from datetime import datetime
 from airflow import DAG
-
 from airflow.operators.python_operator import PythonOperator
 from airflow.providers.postgres.operators.postgres import PostgresOperator
 from airflow.providers.postgres.hooks.postgres import PostgresHook
-
 import pandas as pd
 import requests
 import logging
