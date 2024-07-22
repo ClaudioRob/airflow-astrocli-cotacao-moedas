@@ -1,11 +1,14 @@
 from datetime import datetime
 from airflow import DAG
+
 from airflow.operators.python_operator import PythonOperator
 from airflow.providers.postgres.operators.postgres import PostgresOperator
 from airflow.providers.postgres.hooks.postgres import PostgresHook
+
 import pandas as pd
 import requests
 import logging
+
 from io import StringIO
 
 dag = DAG(
@@ -16,9 +19,10 @@ dag = DAG(
         'retries': 1,
         'start_date': datetime(2024, 1, 1)
     },
-    catchup=False,
+    catchup: False,
     tags=["bcb"]
 )
+
 
 ######## ---- EXTRACT ---- ########
 
@@ -115,7 +119,6 @@ create_table_ddl = """
         CONSTRAINT table_pk PRIMARY KEY (dt_fechamento, cod_moeda)
     )
 """
-
 
 create_table_postgres = PostgresOperator(
     task_id="create_table_postgres",
