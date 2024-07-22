@@ -2,6 +2,7 @@ from datetime import datetime
 from airflow import DAG
 from airflow.operators.python_operator import PythonOperator
 from airflow.providers.postgres.operators.postgres import PostgresOperator
+from airflow.providers.common.sql.operators.sql import SQLExecuteQueryOperator
 from airflow.providers.postgres.hooks.postgres import PostgresHook
 import pandas as pd
 import requests
@@ -116,12 +117,19 @@ create_table_ddl = """
     )
 """
 
-create_table_postgres = PostgresOperator(
+create_table_postgres = SQLExecuteQueryOperator(
     task_id="create_table_postgres",
-    postgres_conn_id="postgres_astro",
+    conn_id="postgres_astro",
     sql=create_table_ddl,
     dag=dag
 )
+
+# create_table_postgres = PostgresOperator(
+#     task_id="create_table_postgres",
+#     postgres_conn_id="postgres_astro",
+#     sql=create_table_ddl,
+#     dag=dag
+# )
 
 ######## ---- LOAD ---- ########
 
