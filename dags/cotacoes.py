@@ -17,7 +17,7 @@ dag = DAG(
     default_args={
         'owner': 'airflow',
         'retries': 1,
-        'start_date': datetime(2023, 1, 1)
+        'start_date': datetime(2024, 1, 1)
     },
     catchup=False,
     tags=["bcb"]
