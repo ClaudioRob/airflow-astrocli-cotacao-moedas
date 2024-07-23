@@ -1,7 +1,15 @@
-
-
 # create_pet_table, populate_pet_table, get_all_pets, and get_birth_date are examples of tasks created by
 # instantiating the Postgres Operator
+import datetime
+import os
+
+from airflow import DAG
+from airflow.providers.common.sql.operators.sql import SQLExecuteQueryOperator
+
+from airflow import Dataset
+from airflow.decorators import dag, task
+from pendulum import datetime
+
 
 ENV_ID = os.environ.get("SYSTEM_TESTS_ENV_ID")
 DAG_ID = "postgres_operator_dag"
