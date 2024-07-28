@@ -12,11 +12,12 @@ import logging
 from io import StringIO
 
 # default args & init dag
-default_args = {
-    "owner": "Claudio Souza",
-    "retries": 1,
-    "retry_delay": 0
-}
+
+# default_args = {
+#     "owner": "Claudio Souza",
+#     "retries": 1,
+#     "retry_delay": 0
+# }
 
 dag = DAG(
     'fin_cotacoes_bcb_classic',
