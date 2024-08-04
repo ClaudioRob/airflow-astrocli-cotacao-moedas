@@ -12,13 +12,15 @@ from pendulum import datetime
 
 
 ENV_ID = os.environ.get("SYSTEM_TESTS_ENV_ID")
-DAG_ID = "postgres_operator_dag"
+DAG_ID = "dag_postgres_operator"
 
 with DAG(
     dag_id=DAG_ID,
-    start_date=datetime.datetime(2020, 2, 2),
+    # start_date=datetime.datetime(2020, 2, 2),
+    start_date=datetime(2020, 2, 2),
     schedule="@once",
     catchup=False,
+    tags=['load', 'table', 'postgres']
 ) as dag:
     create_pet_table = SQLExecuteQueryOperator(
         task_id="create_pet_table",

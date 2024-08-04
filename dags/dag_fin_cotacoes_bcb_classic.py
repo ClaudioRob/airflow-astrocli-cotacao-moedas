@@ -11,23 +11,15 @@ import logging
 
 from io import StringIO
 
-# default args & init dag
-
-# default_args = {
-#     "owner": "Claudio Souza",
-#     "retries": 1,
-#     "retry_delay": 0
-# }
-
 dag = DAG(
-    'fin_cotacoes_bcb_classic',
+    dag_id='dag_fin_cotacoes_bcb_classic',
     schedule_interval='@daily',
     default_args={
         'owner': 'airflow',
         'retries': 1,
         'start_date': datetime(2024, 1, 1)
     },
-    default_args=default_args,
+    # default_args=default_args,
     max_active_runs=1,
     catchup=False,
     tags=['development', 'elt', 'airflow', 'astrocli', 'python']

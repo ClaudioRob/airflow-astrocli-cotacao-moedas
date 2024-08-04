@@ -16,13 +16,14 @@ from airflow.decorators import (
 )
 
 @dag(
+    dag_id="dag_fin_cotacoes_bcb_taskflow",
     schedule="@daily",
     start_date=datetime(2024, 1, 1),
     catchup=False,
     default_args={
         "retries": 2,
     },
-    tags=["bcb"],
+    tags=["bcb", "cotacoes", "taskflow"],
 )
 def fin_cotacoes_bcb_task_flow():
     """
